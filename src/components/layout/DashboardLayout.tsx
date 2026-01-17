@@ -115,7 +115,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             <div className="p-2 gradient-primary rounded-lg">
               <GraduationCap className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="text-lg font-bold text-foreground">ExamHub</span>
+            <span className="text-lg font-bold text-foreground">Exam Ace</span>
             <Button
               variant="ghost"
               size="icon"

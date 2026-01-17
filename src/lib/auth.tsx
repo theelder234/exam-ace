@@ -52,18 +52,32 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(currUser);
 
       if (currUser) {
-        // If role is already in metadata, use it (speed boost)
+        // 1. Try metadata (fastest)
         const metadataRole = currUser.app_metadata?.role as UserRole;
         if (metadataRole) {
           setRole(metadataRole);
           setLoading(false);
-        } else {
-          // Fallback to table fetch
-          const userRole = await fetchUserRole(currUser.id);
-          if (mounted) {
-            setRole(userRole);
-            setLoading(false);
+          return;
+        }
+
+        // 2. Try table fetch
+        let resolvedRole = await fetchUserRole(currUser.id);
+
+        // 3. Last ditch: if no role found but logged in, maybe it's still propagating
+        if (!resolvedRole && mounted) {
+          // Wait longer and try one last time
+          await new Promise(r => setTimeout(r, 2000));
+          resolvedRole = await fetchUserRole(currUser.id);
+        }
+
+        if (mounted) {
+          if (resolvedRole) {
+            setRole(resolvedRole);
+          } else if (!role) {
+            // Only default to student if we have absolutely NO role yet
+            setRole('student');
           }
+          setLoading(false);
         }
       } else {
         setRole(null);

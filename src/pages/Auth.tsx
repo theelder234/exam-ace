@@ -31,11 +31,11 @@ export default function Auth() {
   useEffect(() => {
     if (user && role) {
       if (role === 'admin') {
-        navigate('/admin');
+        navigate('/admin', { replace: true });
       } else if (role === 'teacher') {
-        navigate('/teacher');
+        navigate('/teacher', { replace: true });
       } else {
-        navigate('/student');
+        navigate('/student', { replace: true });
       }
     }
   }, [user, role, navigate]);
@@ -130,7 +130,7 @@ export default function Auth() {
             <div className="p-3 bg-primary-foreground/10 rounded-xl backdrop-blur-sm">
               <GraduationCap className="h-10 w-10" />
             </div>
-            <h1 className="text-3xl font-bold">ExamHub</h1>
+            <h1 className="text-3xl font-bold">Exam Ace</h1>
           </div>
           <h2 className="text-4xl font-bold mb-6 leading-tight">
             Modern Exam Management<br />for Modern Education
@@ -169,7 +169,7 @@ export default function Auth() {
             <div className="p-2 gradient-primary rounded-lg">
               <GraduationCap className="h-6 w-6 text-primary-foreground" />
             </div>
-            <h1 className="text-2xl font-bold text-foreground">ExamHub</h1>
+            <h1 className="text-2xl font-bold text-foreground">Exam Ace</h1>
           </div>
 
           <Card className="border-0 shadow-xl">

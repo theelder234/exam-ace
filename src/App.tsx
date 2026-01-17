@@ -66,7 +66,8 @@ function RootRedirect() {
   if (!user) return <Navigate to="/auth" replace />;
   if (role === 'admin') return <Navigate to="/admin" replace />;
   if (role === 'teacher') return <Navigate to="/teacher" replace />;
-  return <Navigate to="/student" replace />;
+  if (role === 'student') return <Navigate to="/student" replace />;
+  return <Navigate to="/auth" replace />;
 }
 
 function AppRoutes() {
