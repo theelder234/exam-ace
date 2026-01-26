@@ -54,6 +54,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     { href: '/teacher', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/teacher/exams', label: 'Exams', icon: FileText },
     { href: '/teacher/students', label: 'Students', icon: Users },
+    { href: '/teacher/report-cards', label: 'Report Cards', icon: ClipboardList },
     { href: '/teacher/results', label: 'Results', icon: Trophy },
   ];
 
