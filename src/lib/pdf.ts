@@ -1,13 +1,8 @@
 import jsPDF from 'jspdf';
-import 'jspdf-autotable';
-
-// Type extension for jspdf-autotable
-interface jsPDFWithAutoTable extends jsPDF {
-    autoTable: (options: any) => jsPDF;
-}
+import autoTable from 'jspdf-autotable';
 
 export const exportResultsToPDF = (results: any[], examTitle: string) => {
-    const doc = new jsPDF() as jsPDFWithAutoTable;
+    const doc = new jsPDF();
 
     // Add Title
     doc.setFontSize(20);
@@ -34,7 +29,7 @@ export const exportResultsToPDF = (results: any[], examTitle: string) => {
     });
 
     // Generate Table
-    doc.autoTable({
+    autoTable(doc, {
         startY: 35,
         head: [tableColumn],
         body: tableRows,

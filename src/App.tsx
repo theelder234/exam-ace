@@ -27,6 +27,7 @@ const StudentExams = lazy(() => import("./pages/student/StudentExams"));
 const TakeExam = lazy(() => import("./pages/student/TakeExam"));
 const StudentResults = lazy(() => import("./pages/student/StudentResults"));
 const ReportCard = lazy(() => import("./pages/student/ReportCard"));
+const TeacherReportCards = lazy(() => import("./pages/teacher/ReportCards"));
 const SubmissionDetail = lazy(() => import("./pages/shared/SubmissionDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -98,6 +99,7 @@ function AppRoutes() {
       <Route path="/teacher/exams/:id/edit" element={<ProtectedRoute allowedRoles={['teacher']}><CreateExam /></ProtectedRoute>} />
       <Route path="/teacher/students" element={<ProtectedRoute allowedRoles={['teacher']}><StudentsList /></ProtectedRoute>} />
       <Route path="/teacher/results" element={<ProtectedRoute allowedRoles={['teacher']}><TeacherResults /></ProtectedRoute>} />
+      <Route path="/teacher/report-cards" element={<ProtectedRoute allowedRoles={['teacher']}><TeacherReportCards /></ProtectedRoute>} />
       <Route path="/teacher/results/:id" element={<ProtectedRoute allowedRoles={['teacher']}><SubmissionDetail /></ProtectedRoute>} />
 
       {/* Student routes */}
